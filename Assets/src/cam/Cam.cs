@@ -3,7 +3,8 @@ using UnityEngine;
 public class Cam : MonoBehaviour {
     public GameObject targetToFollow;
 
-    private float _followSpeed = 10f;
+    [SerializeField]
+    private float _followSpeed;
     private float _distance = 0f;
 
     void Start() {}
