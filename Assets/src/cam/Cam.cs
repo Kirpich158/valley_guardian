@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CamScript : MonoBehaviour {
+public class Cam : MonoBehaviour {
     public GameObject targetToFollow;
 
     private float _followSpeed = 10f;

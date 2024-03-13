@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementScript : MonoBehaviour
+public class Player_Movement : MonoBehaviour
 {
     [SerializeField] private float _movementSpeed;
 
     void FixedUpdate()
     {
-        KeyboardMovement();
+        InputMovement();
     }
 
-    private void KeyboardMovement() {
+    private void InputMovement() {
         float xKeyboard = Input.GetAxis("Horizontal");
         float yKeyboard = Input.GetAxis("Vertical");
 
