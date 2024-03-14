@@ -17,8 +17,9 @@ public class Enemy_Following : MonoBehaviour {
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.CompareTag("Player")) {
-            Debug.Log("player hitted");
-        }   
+        if (collision.gameObject.CompareTag("Player")) { 
+            var pHP = player.GetComponent<Player_Health>();
+            if (pHP) pHP.healthVal--;
+        }
     }
 }

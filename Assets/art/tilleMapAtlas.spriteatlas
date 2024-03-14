@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: tilleMapAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 256
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 4
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: b7452f147f5edac479c3cbd2a2ee21f9, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: -726224024, guid: b7452f147f5edac479c3cbd2a2ee21f9, type: 3}
+  - {fileID: -640616623, guid: b7452f147f5edac479c3cbd2a2ee21f9, type: 3}
+  - {fileID: -742330508, guid: b7452f147f5edac479c3cbd2a2ee21f9, type: 3}
+  - {fileID: 1829616970, guid: b7452f147f5edac479c3cbd2a2ee21f9, type: 3}
+  - {fileID: 770639174, guid: b7452f147f5edac479c3cbd2a2ee21f9, type: 3}
+  - {fileID: -630898799, guid: b7452f147f5edac479c3cbd2a2ee21f9, type: 3}
+  - {fileID: 1330426649, guid: b7452f147f5edac479c3cbd2a2ee21f9, type: 3}
+  - {fileID: -1053211002, guid: b7452f147f5edac479c3cbd2a2ee21f9, type: 3}
+  - {fileID: -735240343, guid: b7452f147f5edac479c3cbd2a2ee21f9, type: 3}
+  - {fileID: -1595920871, guid: b7452f147f5edac479c3cbd2a2ee21f9, type: 3}
+  - {fileID: -1907565593, guid: b7452f147f5edac479c3cbd2a2ee21f9, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - tilemap_10
+  - tilemap_8
+  - tilemap_9
+  - tilemap_6
+  - tilemap_7
+  - tilemap_4
+  - tilemap_5
+  - tilemap_2
+  - tilemap_3
+  - tilemap_0
+  - tilemap_1
+  m_RenderDataMap: {}
+  m_Tag: tilleMapAtlas
+  m_IsVariant: 0
