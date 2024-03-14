@@ -7,8 +7,7 @@ enum Enemies {
     Elemental,
 }
 
-public class Player_Collision : MonoBehaviour
-{
+public class Player_Collision : MonoBehaviour {
     public UI_Health ui_script;
 
     private void OnCollisionEnter2D(Collision2D collision) {

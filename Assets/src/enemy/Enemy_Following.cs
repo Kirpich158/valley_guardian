@@ -13,6 +13,6 @@ public class Enemy_Following : MonoBehaviour {
     void Update() {
         // Follows player
         // transform.position = new Vector3(transform.position.x + Time.deltaTime * _move_speed, transform.position.y, transform.position.z);
-        transform.position += (player.transform.position - transform.position) * Time.deltaTime * _move_speed;
+        transform.position += (player.transform.position - transform.position).normalized * Time.deltaTime * _move_speed;
     }
 }

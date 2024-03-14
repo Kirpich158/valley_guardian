@@ -1,21 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player_Movement : MonoBehaviour
 {
-    [SerializeField] private float _movementSpeed;
+    public float _moveSpeed;
 
-    void FixedUpdate()
+    void Update()
     {
         InputMovement();
     }
 
     private void InputMovement() {
-        float xKeyboard = Input.GetAxis("Horizontal");
-        float yKeyboard = Input.GetAxis("Vertical");
+        float xKeyboard = Input.GetAxisRaw("Horizontal");
+        float yKeyboard = Input.GetAxisRaw("Vertical");
 
-        transform.position += transform.right * xKeyboard * _movementSpeed;
-        transform.position += transform.up * yKeyboard * _movementSpeed;
+        Vector3 dir = new Vector3(xKeyboard, yKeyboard).normalized;
+        transform.position += dir * _moveSpeed * Time.deltaTime;
+        
+        // Work in progress
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            transform.position += dir * _moveSpeed * 100 * Time.deltaTime;
+        }
     }
 }
