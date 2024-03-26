@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI_Health : MonoBehaviour {
+public class Health_UI : MonoBehaviour {
     public GameObject healthPrefab;
-    public Player_Health playerHealth;
+    public PlayerHealth playerHealth;
     public Stack<GameObject> uiHearts = new Stack<GameObject>();
 
     void Start() {

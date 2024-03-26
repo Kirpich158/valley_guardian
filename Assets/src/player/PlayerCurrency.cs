@@ -1,11 +1,14 @@
 using TMPro;
 using UnityEngine;
 
-public class Player_Currency : MonoBehaviour {
+public class PlayerCurrency : MonoBehaviour {
     public TextMeshProUGUI textObj;
 
-    private int _gold = 0;
-    public int Gold { get; set; }
+    private int _gold { get; set; }
+
+    void Start() {
+        _gold = 0;
+    }
 
     void Update()
     {
@@ -17,6 +20,6 @@ public class Player_Currency : MonoBehaviour {
         }
 
         if (_gold < 0) _gold = 0;
-        textObj.text = "Gold: " + _gold;
+        textObj.text = "GOLD: " + _gold;
     }
 }

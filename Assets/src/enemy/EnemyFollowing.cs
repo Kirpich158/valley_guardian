@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy_Following : MonoBehaviour {
+public class EnemyFollowing : MonoBehaviour {
     public GameObject player;
 
     [SerializeField]

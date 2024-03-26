@@ -7,8 +7,8 @@ enum Enemies {
     Elemental,
 }
 
-public class Player_Collision : MonoBehaviour {
-    public UI_Health ui_script;
+public class PlayerCollision : MonoBehaviour {
+    public Health_UI ui_script;
 
     private void OnCollisionEnter2D(Collision2D collision) {
         //switch (collision.gameObject.tag) {
@@ -18,7 +18,7 @@ public class Player_Collision : MonoBehaviour {
         //}
 
         if (collision.gameObject.CompareTag(Enemies.Goblin.ToString())) {
-            gameObject.GetComponent<Player_Health>().healthVal--;
+            gameObject.GetComponent<PlayerHealth>().healthVal--;
             Destroy(ui_script.uiHearts.Peek());
             ui_script.uiHearts.Pop();
         }

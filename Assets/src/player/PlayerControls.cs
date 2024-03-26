@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Player_Controls : MonoBehaviour
+public class PlayerControls : MonoBehaviour
 {
     public float _moveSpeed;
-    public UI_Inventory inventory;
+    public CanvasGroup inventory;
 
     private bool _isInInventory = false;
 
@@ -29,11 +29,11 @@ public class Player_Controls : MonoBehaviour
     private void InventoryToggle() {
         if (Input.GetKeyDown(KeyCode.I) && !_isInInventory) {
             _isInInventory = true;
-            inventory.Show();
+            inventory.alpha = 1;
             Time.timeScale = 0;
         } else if (Input.GetKeyDown(KeyCode.I) && _isInInventory) {
             _isInInventory = false;
-            inventory.Hide();
+            inventory.alpha = 0;
             Time.timeScale = 1;
         }
     }

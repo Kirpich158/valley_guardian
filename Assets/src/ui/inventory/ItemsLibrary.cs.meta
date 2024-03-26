@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 6e896b40c7e342c4c9336563af43f663
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _currencyBag: {fileID: 21300000, guid: 02800fb9cff14da47a04572790384d8b, type: 3}
+  - _healthPotion: {fileID: 21300000, guid: 65f0e363b74cf5845ab8c3fbc14f39ac, type: 3}
+  - _sword: {fileID: 21300000, guid: ed130aac49764ad4f9d35454c297b75a, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
