@@ -1,20 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Inventory {
-    private List<Item> _items;
+    public event EventHandler OnItemsChange;
+
     public List<Item> Items { get; }
 
     public Inventory() {
         Items = new List<Item>();
-
-        AddItem(new Item(ItemType.HealthPotion, 3));
-        AddItem(new Item(ItemType.CurrencyBag, 10));
-        AddItem(new Item(ItemType.Sword, 1));
     }
 
     public void AddItem(Item item) {
+        if (item.IsStackable()) {
+            for (int i = 0; i < Items.Count; i++) {
+                if (Items[i].type == item.type) { // ==> TODO <== add check for max quantity per slot in the future
+                    Items[i].quantity += item.quantity;
+                    OnItemsChange?.Invoke(this, EventArgs.Empty); // TMP fix for quantity txt update, cause of return; usage
+                    return;
+                }
+            }
+        }
         Items.Add(item);
+        
+        OnItemsChange?.Invoke(this, EventArgs.Empty); // ==> TODO <== adapt this with return; logic from above to update txt quantity of items
     }
 }

@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class PlayerMain : MonoBehaviour
 {
-    private Inventory _inventory;
+    public Inventory Inventory { get; set; }
     [SerializeField] private Inventory_UI _inventory_UI;
     
     void Start() {
-        _inventory = new Inventory();
-        _inventory_UI.SetInventory(_inventory);
+        Inventory = new Inventory();
+        _inventory_UI.SetInventory(Inventory);
+
+        DroppedItem.SpawnItem(new Vector3(2, 0, 0), new Item(ItemType.Sword, 1));
+        DroppedItem.SpawnItem(new Vector3(-2, 0, 0), new Item(ItemType.Helmet, 1));
+        DroppedItem.SpawnItem(new Vector3(0, 2, 0), new Item(ItemType.Armor, 1));
     }
 }

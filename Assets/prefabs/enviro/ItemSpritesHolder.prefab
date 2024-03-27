@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8857978543909288348
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8857978543909288346}
+  - component: {fileID: 8857978543909288349}
+  m_Layer: 0
+  m_Name: ItemSpritesHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8857978543909288346
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8857978543909288348}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 985.11835, y: 475.29095, z: 6.333498}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8857978543909288349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8857978543909288348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e896b40c7e342c4c9336563af43f663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 253357799490391629, guid: 005917b222a876547b70dd6e8d9d6bb1, type: 3}
+  currencyBag: {fileID: 21300000, guid: 143709418ed56aa46bf1f75ab7d65ece, type: 3}
+  healthPotion: {fileID: 21300000, guid: 2119c1055597116418dfa27120803e7d, type: 3}
+  helmet: {fileID: 21300000, guid: 773874299b1ce464faef59e3b5fbc388, type: 3}
+  armor: {fileID: 21300000, guid: c48a8fd7bb85fa74cb02df1ca6b52e6d, type: 3}
+  boots: {fileID: 21300000, guid: 1610221bd874d7848aa7860d8b0cc40b, type: 3}
+  ring: {fileID: 21300000, guid: 90d0eb184bed0fa42a3ec56a01c6656e, type: 3}
+  sword: {fileID: 21300000, guid: 82ef91089b9234d4da976db49037358f, type: 3}
+  shield: {fileID: 21300000, guid: ddccfd9a64f14bb4aac1ee1b3d18f640, type: 3}
+  fishingRod: {fileID: 21300000, guid: 802a007956fef5f438acb70b9973ff59, type: 3}

@@ -9,8 +9,10 @@ public class PlayerTrigger : MonoBehaviour {
             Debug.Log("npc is near");
         }
 
-        if (collider.gameObject.GetComponent<DroppedItem>() != null) {
-            
+        DroppedItem enviroItem = collider.GetComponent<DroppedItem>();
+        if (enviroItem != null) {
+            gameObject.GetComponent<PlayerMain>().Inventory.AddItem(enviroItem.GetItem());
+            enviroItem.Kill();
         }
     }
 }
