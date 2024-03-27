@@ -36,7 +36,8 @@ public class Inventory_UI : MonoBehaviour
             // showing sprite and quantity
             Color tmpColor = itemImg.color;
             tmpColor.a = 1;
-            itemImg.color = countTxt.color = tmpColor;
+            itemImg.color = tmpColor;
+            if (_inventory.Items[i].quantity > 1) countTxt.color = tmpColor;
         }
     }
 }
