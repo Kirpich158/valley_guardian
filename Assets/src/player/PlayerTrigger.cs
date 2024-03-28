@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerTrigger : MonoBehaviour {
@@ -10,8 +11,14 @@ public class PlayerTrigger : MonoBehaviour {
         }
 
         DroppedItem enviroItem = collider.GetComponent<DroppedItem>();
+        PlayerMain player = gameObject.GetComponent<PlayerMain>();
         if (enviroItem != null) {
-            gameObject.GetComponent<PlayerMain>().Inventory.AddItem(enviroItem.GetItem());
+            if (enviroItem.GetItem().type <= ItemType.FishingRod 
+                && player.Equipment.Equipments[(int)enviroItem.GetItem().type] == null) {
+                player.Equipment.Equip(enviroItem.GetItem()); // ==> TODO Change later to equip if the slot is empty otherwise add to backpack, so player can equip it manually
+            } else {
+                player.Backpack.AddItem(enviroItem.GetItem());
+            }
             enviroItem.Kill();
         }
     }

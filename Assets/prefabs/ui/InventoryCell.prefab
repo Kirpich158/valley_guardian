@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 2463320004721849970}
   - component: {fileID: 7731518207007779016}
   m_Layer: 5
-  m_Name: BackpackCell
+  m_Name: InventoryCell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

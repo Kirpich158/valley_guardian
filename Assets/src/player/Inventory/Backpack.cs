@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory {
+public class Backpack {
     public event EventHandler OnItemsChange;
 
     public List<Item> Items { get; }
 
-    public Inventory() {
+    public Backpack() {
         Items = new List<Item>();
     }
 

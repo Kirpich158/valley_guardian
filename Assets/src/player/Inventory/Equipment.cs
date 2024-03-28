@@ -1,39 +1,42 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Equipment {
+    public event EventHandler OnItemsChange;
 
-
-    public Item[] equipments;
+    public Item[] Equipments { get; }
 
     public Equipment () {
-        equipments = new Item[7];
+        Equipments = new Item[7];
     }
 
     public void Equip(Item item) {
         switch (item.type) {
             case ItemType.Helmet:
-                equipments[0] = item;
+                Equipments[0] = item;
                 break;
             case ItemType.Armor:
-                equipments[1] = item;
+                Equipments[1] = item;
                 break;
             case ItemType.Boots:
-                equipments[2] = item;
+                Equipments[2] = item;
                 break;
             case ItemType.Ring:
-                equipments[3] = item;
+                Equipments[3] = item;
                 break;
             case ItemType.Sword:
-                equipments[4] = item;
+                Equipments[4] = item;
                 break;
             case ItemType.Shield:
-                equipments[5] = item;
+                Equipments[5] = item;
                 break;
             case ItemType.FishingRod:
-                equipments[6] = item;
+                Equipments[6] = item;
                 break;
         }
+
+        OnItemsChange?.Invoke(this, EventArgs.Empty);
     }
 }

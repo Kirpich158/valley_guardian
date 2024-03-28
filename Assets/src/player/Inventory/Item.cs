@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum ItemType {
-    CurrencyBag,
-    HealthPotion,
     Helmet,
     Armor,
     Boots,
     Ring,
     Sword,
     Shield,
-    FishingRod
+    FishingRod,
+    CurrencyBag,
+    HealthPotion,
 }
 
 [Serializable]
