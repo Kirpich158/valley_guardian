@@ -1,16 +1,18 @@
 using UnityEngine;
 
-public class PlayerControls : MonoBehaviour
-{
+public class PlayerControls : MonoBehaviour {
     public float _moveSpeed;
-    public CanvasGroup inventory;
 
-    private bool _isInInventory = false;
+    private bool _InventoryOpened = false;
 
     void Update()
     {
         InputMovement();
-        InventoryToggle();
+        InventoryControls();
+
+        if (Input.GetKeyDown(KeyCode.H)) {
+            UIManagerScript.Instance.AddHearts(1);
+        }
     }
 
     private void InputMovement() {
@@ -26,15 +28,13 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
-    private void InventoryToggle() {
-        if (Input.GetKeyDown(KeyCode.I) && !_isInInventory) {
-            _isInInventory = true;
-            inventory.alpha = 1;
-            Time.timeScale = 0;
-        } else if (Input.GetKeyDown(KeyCode.I) && _isInInventory) {
-            _isInInventory = false;
-            inventory.alpha = 0;
-            Time.timeScale = 1;
+    private void InventoryControls() {
+        if (Input.GetKeyDown(KeyCode.I) && !_InventoryOpened) {
+            UIManagerScript.Instance.ShowInventoryPanel();
+            _InventoryOpened = true;
+        } else if (Input.GetKeyDown(KeyCode.I) && _InventoryOpened) {
+            UIManagerScript.Instance.HideInventoryPanel();
+            _InventoryOpened = false;
         }
     }
 }

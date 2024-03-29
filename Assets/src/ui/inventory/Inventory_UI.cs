@@ -5,11 +5,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Inventory_UI : MonoBehaviour
-{
+public class Inventory_UI : MonoBehaviour {
     private Backpack _backpack;
     private Equipment _equipment;
 
+    [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private Transform _backpackSection;
     [SerializeField] private Transform _equipmentCells;
 
@@ -94,5 +94,14 @@ public class Inventory_UI : MonoBehaviour
             itemImg.color = tmpColor;
             if (_backpack.Items[i].quantity > 1) countTxt.color = tmpColor;
         }
+    }
+
+    public void ShowPanel() {
+        _canvasGroup.alpha = 1; // ==> TODO change for animation clip <==
+        Time.timeScale = 0;
+    }
+    public void HidePanel() {
+        Time.timeScale = 1;
+        _canvasGroup.alpha = 0; // ==> TODO change for animation clip <==
     }
 }

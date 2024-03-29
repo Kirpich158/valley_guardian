@@ -14,7 +14,7 @@ public class Backpack {
     public void AddItem(Item item) {
         if (item.IsStackable()) {
             for (int i = 0; i < Items.Count; i++) {
-                if (Items[i].type == item.type) { // ==> TODO <== add check for max quantity per slot in the future
+                if (Items[i].type == item.type) { // ==> TODO add check for max quantity per slot in the future <==
                     Items[i].quantity += item.quantity;
                     OnItemsChange?.Invoke(this, EventArgs.Empty); // TMP fix for quantity txt update, cause of return; usage
                     return;
@@ -23,6 +23,6 @@ public class Backpack {
         }
         Items.Add(item);
         
-        OnItemsChange?.Invoke(this, EventArgs.Empty); // ==> TODO <== adapt this with return; logic from above to update txt quantity of items
+        OnItemsChange?.Invoke(this, EventArgs.Empty); // ==> TODO adapt this with return; logic from above to update txt quantity of items <==
     }
 }
