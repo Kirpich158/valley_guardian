@@ -29,10 +29,10 @@ public class PlayerControls : MonoBehaviour {
     }
 
     private void InventoryControls() {
-        if (Input.GetKeyDown(KeyCode.I) && !_InventoryOpened) {
+        if (Input.GetKeyDown(KeyCode.I) && !_InventoryOpened) { // opening inventory
             UIManagerScript.Instance.ShowInventoryPanel();
             _InventoryOpened = true;
-        } else if (Input.GetKeyDown(KeyCode.I) && _InventoryOpened) {
+        } else if (Input.GetKeyDown(KeyCode.I) && _InventoryOpened) { // closing inventory
             UIManagerScript.Instance.HideInventoryPanel();
             _InventoryOpened = false;
         }
