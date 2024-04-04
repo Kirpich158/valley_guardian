@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -19,7 +17,27 @@ public class DebugToolScript : MonoBehaviour
         }
     }
 
+    #region ItemSpawn
+    [Space(20)]
+    public TMP_Dropdown itemDropDown;
+    public float itemSpawnDistance;
+
+    private int _modificator = 1;
+
+    public void SpawnItem() {
+        if (itemDropDown.options[0].image == null) {
+            itemDropDown.options.Remove(itemDropDown.options[0]);
+            _modificator = 0;
+        }
+
+        Vector3 itemSpawnDir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0).normalized;
+        Vector3 itemPos = itemSpawnDir * itemSpawnDistance;
+        DroppedItem.SpawnItem(itemPos, new Item((ItemType)itemDropDown.value - _modificator, 1));
+    }
+    #endregion
+
     #region GoldSection
+    [Space(20)]
     public PlayerCurrency currency;
 
     public void AddGold(TMP_InputField input) {
@@ -29,8 +47,4 @@ public class DebugToolScript : MonoBehaviour
         currency.Gold -= int.Parse(input.text);
     }
     #endregion
-
-    public void SpawnItem() {
-
-    }
 }

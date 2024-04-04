@@ -3312,6 +3312,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 556084065}
+  itemDropDown: {fileID: 148442005}
+  itemSpawnDistance: 2
   currency: {fileID: 1286846819}
 --- !u!1 &590033394
 GameObject:

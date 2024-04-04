@@ -20,11 +20,6 @@ public class PlayerMain : MonoBehaviour {
         Equipment = new Equipment();
         _inventory_UI.SetupInventory(Backpack, Equipment);
 
-        DroppedItem.SpawnItem(new Vector3(2, 0, 0), new Item(ItemType.Sword, 1));
-        DroppedItem.SpawnItem(new Vector3(-2, 0, 0), new Item(ItemType.Helmet, 1));
-        DroppedItem.SpawnItem(new Vector3(0, 2, 0), new Item(ItemType.Armor, 1));
-        DroppedItem.SpawnItem(new Vector3(0, 4, 0), new Item(ItemType.Armor, 1));
-        DroppedItem.SpawnItem(new Vector3(0, 6, 0), new Item(ItemType.Armor, 1));
         DroppedItem.SpawnItem(new Vector3(0, -2, 0), new Item(ItemType.HealthPotion, 2));
         DroppedItem.SpawnItem(new Vector3(0, -4, 0), new Item(ItemType.HealthPotion, 1));
     }
