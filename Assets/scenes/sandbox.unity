@@ -222,13 +222,13 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 556084063}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 556084067}
+        m_TargetAssemblyTypeName: DebugToolScript, Assembly-CSharp
+        m_MethodName: SpawnNPC
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1309,13 +1309,13 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 556084063}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 556084067}
+        m_TargetAssemblyTypeName: DebugToolScript, Assembly-CSharp
+        m_MethodName: SpawnEnemy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2156,13 +2156,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 375354492}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 1757631860}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &394627919
 GameObject:
@@ -3315,6 +3315,14 @@ MonoBehaviour:
   itemDropDown: {fileID: 148442005}
   itemSpawnDistance: 2
   currency: {fileID: 1286846819}
+  enemyDropDown: {fileID: 192696304}
+  enemies:
+  - {fileID: 2154564443609803794, guid: 7b3c77d9dc80a5b4689add711f525428, type: 3}
+  enemySpawnDistance: 4
+  npcDropDown: {fileID: 2837601}
+  npcs:
+  - {fileID: 6952534516765378255, guid: 237bf24acbf5c1f4389a266d044d39aa, type: 3}
+  npcSpawnDistance: 3
 --- !u!1 &590033394
 GameObject:
   m_ObjectHideFlags: 0
@@ -9622,6 +9630,7 @@ RectTransform:
   - {fileID: 978875489}
   - {fileID: 634700594}
   - {fileID: 556084064}
+  - {fileID: 375354494}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
