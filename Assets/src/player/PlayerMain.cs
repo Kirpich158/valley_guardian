@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerMain : MonoBehaviour {
     public static PlayerMain Instance { get; private set; }
-    public int HealthVal { get; set; }
 
+    public int HealthVal { get; set; }
     public Backpack Backpack { get; set; }
     public Equipment Equipment { get; set; }
+
     [SerializeField] private Inventory_UI _inventory_UI;
+    [SerializeField] private PlayerTrigger playerTriggerScript;
     
     private void Awake() {
         Instance = this;
@@ -27,6 +29,10 @@ public class PlayerMain : MonoBehaviour {
     public void Update() {
         if (HealthVal <= 0) {
             UIManagerScript.Instance.ShowGameOverPanel();
+        }
+
+        if (playerTriggerScript.OnFishingSpot && Input.GetKeyDown(KeyCode.F) && Equipment.Equipments[6] != null) {
+            UIManagerScript.Instance.ShowFishingGame();
         }
     }
 }

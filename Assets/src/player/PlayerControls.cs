@@ -3,15 +3,16 @@ using UnityEngine;
 public class PlayerControls : MonoBehaviour {
     public float _moveSpeed;
 
-    private bool _InventoryOpened = false;
+    public bool IsMovementBlocked {  get; set; }
 
-    void Update()
-    {
-        InputMovement();
-        InventoryControls();
+    private void Start() {
+        IsMovementBlocked = false;
+    }
 
-        if (Input.GetKeyDown(KeyCode.H)) {
-            UIManagerScript.Instance.AddHearts(1);
+    void Update() {
+        if (!IsMovementBlocked) {
+            InputMovement();
+            InventoryControls();
         }
     }
 
@@ -29,12 +30,10 @@ public class PlayerControls : MonoBehaviour {
     }
 
     private void InventoryControls() {
-        if (Input.GetKeyDown(KeyCode.I) && !_InventoryOpened) { // opening inventory
+        if (Input.GetKeyDown(KeyCode.I) && !UIManagerScript.Instance.InventoryOpened) { // opening inventory
             UIManagerScript.Instance.ShowInventoryPanel();
-            _InventoryOpened = true;
-        } else if (Input.GetKeyDown(KeyCode.I) && _InventoryOpened) { // closing inventory
+        } else if (Input.GetKeyDown(KeyCode.I) && UIManagerScript.Instance.InventoryOpened) { // closing inventory
             UIManagerScript.Instance.HideInventoryPanel();
-            _InventoryOpened = false;
         }
     }
 }

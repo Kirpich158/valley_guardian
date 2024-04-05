@@ -7,6 +7,7 @@ TagManager:
   - Goblin
   - NPC
   - item
+  - FishingSpot
   layers:
   - Default
   - TransparentFX

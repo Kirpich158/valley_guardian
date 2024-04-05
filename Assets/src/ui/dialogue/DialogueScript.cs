@@ -18,10 +18,14 @@ public class DialogueScript : MonoBehaviour {
 
     public void ShowPanel() {
         _canvasGroup.alpha = 1; // ==> TODO change for animation clip <==
+        _canvasGroup.interactable = true;
+        _canvasGroup.blocksRaycasts = true;
         Time.timeScale = 0;
     }
     public void HidePanel() {
-        Time.timeScale = 1; 
+        Time.timeScale = 1;
+        _canvasGroup.interactable = false;
+        _canvasGroup.blocksRaycasts = false;
         _canvasGroup.alpha = 0; // ==> TODO change for animation clip <==
     }
 }

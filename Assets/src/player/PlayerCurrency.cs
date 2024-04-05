@@ -12,12 +12,12 @@ public class PlayerCurrency : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Equals)) {
-            Gold += 10;
-        }
-        if (Input.GetKeyDown(KeyCode.Minus)) {
-            Gold -= 10;
-        }
+        //if (Input.GetKeyDown(KeyCode.Equals)) {
+        //    Gold += 10;
+        //}
+        //if (Input.GetKeyDown(KeyCode.Minus)) {
+        //    Gold -= 10;
+        //}
 
         if (Gold < 0) Gold = 0;
         textObj.text = "GOLD: " + Gold;

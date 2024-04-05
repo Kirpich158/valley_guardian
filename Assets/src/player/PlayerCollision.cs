@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 enum Enemies {
@@ -9,8 +8,6 @@ enum Enemies {
 }
 
 public class PlayerCollision : MonoBehaviour {
-
-
     private void OnCollisionEnter2D(Collision2D collision) {
         //switch (collision.gameObject.tag) {
         //    case Enemies.Goblin.ToString():

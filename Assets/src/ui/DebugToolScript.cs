@@ -1,20 +1,29 @@
 using UnityEngine;
 using TMPro;
 
-public class DebugToolScript : MonoBehaviour
-{
-    public CanvasGroup canvasGroup;
-
+public class DebugToolScript : MonoBehaviour {
+    [SerializeField] private CanvasGroup _canvasGroup;
     private bool _isPanelShown = false;
 
     public void Update() {
         if (Input.GetKeyDown(KeyCode.BackQuote) && !_isPanelShown) { // opening panel
-            canvasGroup.alpha = 1;
-            _isPanelShown = true;
+            ShowPanel();
         } else if (Input.GetKeyDown(KeyCode.BackQuote) && _isPanelShown) { // closing panel
-            canvasGroup.alpha = 0;
-            _isPanelShown = false;
+            HidePanel();
         }
+    }
+
+    public void ShowPanel() {
+        _canvasGroup.alpha = 1; // ==> TODO change for animation clip <==
+        _canvasGroup.interactable = true;
+        _canvasGroup.blocksRaycasts = true;
+        _isPanelShown = true;
+    }
+    public void HidePanel() {
+        _canvasGroup.interactable = false;
+        _canvasGroup.blocksRaycasts = false;
+        _canvasGroup.alpha = 0; // ==> TODO change for animation clip <==
+        _isPanelShown = false;
     }
 
     #region ItemSpawn
@@ -42,6 +51,18 @@ public class DebugToolScript : MonoBehaviour
     }
     public void RemoveGold(TMP_InputField input) {
         currency.Gold -= int.Parse(input.text);
+    }
+    #endregion
+
+    #region HeartSection
+    //[Space(20)]
+    //[Header("Heart Management References")]
+
+    public void AddHearts(TMP_InputField input) {
+        UIManagerScript.Instance.AddHearts(int.Parse(input.text));
+    }
+    public void RemoveHearts(TMP_InputField input) {
+        UIManagerScript.Instance.RemoveHearts(int.Parse(input.text));
     }
     #endregion
 
