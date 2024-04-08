@@ -67,7 +67,7 @@ public class FishingGameScript : MonoBehaviour {
             float zoneBot = _zoneObj.transform.localPosition.y - _zoneObj.GetComponent<RectTransform>().rect.height / 2;
             float zoneTop = _zoneObj.transform.localPosition.y + _zoneObj.GetComponent<RectTransform>().rect.height / 2;
             if (_pointerTrans.localPosition.y < zoneTop && _pointerTrans.localPosition.y > zoneBot) {
-                AddToProgress(_progressReward); // progress reward
+                _progress += _progressReward; // progress reward
                 //IncreaseTheProgress();
 
                 // deletion of old hit zone
@@ -77,7 +77,7 @@ public class FishingGameScript : MonoBehaviour {
                     _zoneObj = SpawnNewZone();
                 }
             } else {
-                AddToProgress(-_progressPenalty); // progress penalty
+                _progress -= _progressPenalty; // progress penalty
                 // DecreaseTheProgress(); 
             }
         }
@@ -90,14 +90,10 @@ public class FishingGameScript : MonoBehaviour {
             UIManagerScript.Instance.HideFishingGame();
         }
 
-        if (_progress > 0 && _progress < 100 && _pointerDir != 0) AddToProgress(-Time.deltaTime * _progressDecay);
+        if (_progress > 0 && _progress < 100 && _pointerDir != 0) _progress -= Time.deltaTime * _progressDecay;
         else if (_progress <= 0) _progress = 0;
 
         _progressBarTrans.sizeDelta = new Vector2(_progressBarTrans.sizeDelta.x, Mathf.Lerp(40, 490, _progress / 100));
-    }
-
-    private void AddToProgress(float value) {
-        _progress += value;
     }
 
     #region Old handmade linear interpolation try // COMEBACK TO IT
