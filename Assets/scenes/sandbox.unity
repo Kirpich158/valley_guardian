@@ -9771,11 +9771,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416fb6cee6a818b4088e8cb7e4ce6321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zonePrefab: {fileID: 531352781441853463, guid: fbe4405eb91874540b709488a6f5ce80, type: 3}
-  pointerTransform: {fileID: 79207001}
-  _canvasGroup: {fileID: 1231636085}
   _pointerSpeed: 400
-  _successfulHitProgression: 20
+  _zonePrefab: {fileID: 531352781441853463, guid: fbe4405eb91874540b709488a6f5ce80, type: 3}
+  _pointerTrans: {fileID: 79207001}
+  _progressBarTrans: {fileID: 968507339}
+  _canvasGroup: {fileID: 1231636085}
+  _progressDecay: 5
+  _progressReward: 20
+  _progressPenalty: 40
 --- !u!225 &1231636085
 CanvasGroup:
   m_ObjectHideFlags: 0
