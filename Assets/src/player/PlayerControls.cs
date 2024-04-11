@@ -1,14 +1,22 @@
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerControls : MonoBehaviour {
     [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _dashSpeed;
+    [SerializeField] private float _dashDecayMultiplier;
+
     [SerializeField] private Animator _animator;
+    [SerializeField] private Rigidbody2D _rigidBody2D;
 
     public bool IsMovementBlocked {  get; set; }
 
+    private Vector3 _dir;
+    private Vector3 _dashDir;
+    private float _dashSpeedVal;
+
     private void Start() {
         IsMovementBlocked = false;
+        _dashSpeedVal = _dashSpeed;
     }
 
     void Update() {
@@ -18,26 +26,43 @@ public class PlayerControls : MonoBehaviour {
         }
     }
 
+    private void FixedUpdate() {
+        switch (PlayerMain.Instance.State) {
+            case PlayerStates.Moving:
+                _rigidBody2D.velocity = _dir * _moveSpeed;
+                break;
+            case PlayerStates.Dashing:
+                _rigidBody2D.velocity = _dashDir * _dashSpeedVal;
+                break;
+        }
+        
+    }
+
     private void InputMovement() {
-        float xKeyboard = Input.GetAxisRaw("Horizontal");
-        float yKeyboard = Input.GetAxisRaw("Vertical");
+        if (PlayerMain.Instance.State != PlayerStates.Dashing) {
+            float xKeyboard = Input.GetAxisRaw("Horizontal");
+            float yKeyboard = Input.GetAxisRaw("Vertical");
+            _dir = new Vector3(xKeyboard, yKeyboard).normalized;
 
-        Vector3 dir = new Vector3(xKeyboard, yKeyboard).normalized;
+            // swapping states based on player input
+            if (_dir != Vector3.zero) PlayerMain.Instance.State = PlayerStates.Moving;
+            else PlayerMain.Instance.State = PlayerStates.Idle;
 
-        // swapping states based on player input
-        if (dir != Vector3.zero) PlayerMain.Instance.State = PlayerStates.Moving;
-        else PlayerMain.Instance.State = PlayerStates.Idle;
+            SetAnimationParams();
+        }
 
-        // setting right animation based on movement dir
-        _animator.SetFloat("Horizontal", dir.x);
-        _animator.SetFloat("Vertical", dir.y);
-        _animator.SetBool("IsMoving", PlayerMain.Instance.State == PlayerStates.Moving);
-
-        transform.position += _moveSpeed * Time.deltaTime * dir;
-
-        // Work in progress
+        // player's dash on space press
         if (Input.GetKeyDown(KeyCode.Space)) {
-            transform.position += _moveSpeed * 100 * Time.deltaTime * dir;
+            _dashDir = _dir;
+            PlayerMain.Instance.State = PlayerStates.Dashing;
+        }
+
+        if (PlayerMain.Instance.State == PlayerStates.Dashing) {
+            _dashSpeedVal -= _dashSpeedVal * _dashDecayMultiplier * Time.deltaTime;
+            if (_dashSpeedVal <= _moveSpeed) {
+                PlayerMain.Instance.State = PlayerStates.Moving;
+                _dashSpeedVal = _dashSpeed;
+            }
         }
     }
 
@@ -47,5 +72,11 @@ public class PlayerControls : MonoBehaviour {
         } else if (Input.GetKeyDown(KeyCode.I) && UIManagerScript.Instance.InventoryOpened) { // closing inventory
             UIManagerScript.Instance.HideInventoryPanel();
         }
+    }
+
+    private void SetAnimationParams() {
+        _animator.SetFloat("Horizontal", _dir.x);
+        _animator.SetFloat("Vertical", _dir.y);
+        _animator.SetBool("IsMoving", PlayerMain.Instance.State == PlayerStates.Moving);
     }
 }
