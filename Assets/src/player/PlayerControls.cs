@@ -1,7 +1,9 @@
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerControls : MonoBehaviour {
-    public float _moveSpeed;
+    [SerializeField] private float _moveSpeed;
+    [SerializeField] private Animator _animator;
 
     public bool IsMovementBlocked {  get; set; }
 
@@ -21,6 +23,16 @@ public class PlayerControls : MonoBehaviour {
         float yKeyboard = Input.GetAxisRaw("Vertical");
 
         Vector3 dir = new Vector3(xKeyboard, yKeyboard).normalized;
+
+        // swapping states based on player input
+        if (dir != Vector3.zero) PlayerMain.Instance.State = PlayerStates.Moving;
+        else PlayerMain.Instance.State = PlayerStates.Idle;
+
+        // setting right animation based on movement dir
+        _animator.SetFloat("Horizontal", dir.x);
+        _animator.SetFloat("Vertical", dir.y);
+        _animator.SetBool("IsMoving", PlayerMain.Instance.State == PlayerStates.Moving);
+
         transform.position += _moveSpeed * Time.deltaTime * dir;
 
         // Work in progress
