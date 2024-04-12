@@ -10,8 +10,8 @@ public class PlayerControls : MonoBehaviour {
 
     public bool IsMovementBlocked {  get; set; }
 
-    private Vector3 _dir;
-    private Vector3 _dashDir;
+    private Vector2 _dir;
+    private Vector2 _dashDir;
     private float _dashSpeedVal;
 
     private void Start() {
@@ -31,6 +31,9 @@ public class PlayerControls : MonoBehaviour {
             case PlayerStates.Moving:
                 _rigidBody2D.velocity = _dir * _moveSpeed;
                 break;
+            case PlayerStates.Idle:
+                _rigidBody2D.velocity = Vector2.zero;
+                break;
             case PlayerStates.Dashing:
                 _rigidBody2D.velocity = _dashDir * _dashSpeedVal;
                 break;
@@ -39,20 +42,21 @@ public class PlayerControls : MonoBehaviour {
     }
 
     private void InputMovement() {
+        // normal movement
         if (PlayerMain.Instance.State != PlayerStates.Dashing) {
             float xKeyboard = Input.GetAxisRaw("Horizontal");
             float yKeyboard = Input.GetAxisRaw("Vertical");
-            _dir = new Vector3(xKeyboard, yKeyboard).normalized;
+            _dir = new Vector2(xKeyboard, yKeyboard).normalized;
 
             // swapping states based on player input
-            if (_dir != Vector3.zero) PlayerMain.Instance.State = PlayerStates.Moving;
+            if (_dir != Vector2.zero) PlayerMain.Instance.State = PlayerStates.Moving;
             else PlayerMain.Instance.State = PlayerStates.Idle;
 
             SetAnimationParams();
         }
 
         // player's dash on space press
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space) && PlayerMain.Instance.State == PlayerStates.Moving) {
             _dashDir = _dir;
             PlayerMain.Instance.State = PlayerStates.Dashing;
         }
@@ -60,7 +64,9 @@ public class PlayerControls : MonoBehaviour {
         if (PlayerMain.Instance.State == PlayerStates.Dashing) {
             _dashSpeedVal -= _dashSpeedVal * _dashDecayMultiplier * Time.deltaTime;
             if (_dashSpeedVal <= _moveSpeed) {
-                PlayerMain.Instance.State = PlayerStates.Moving;
+                if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+                    PlayerMain.Instance.State = PlayerStates.Moving;
+                else PlayerMain.Instance.State = PlayerStates.Idle;
                 _dashSpeedVal = _dashSpeed;
             }
         }
