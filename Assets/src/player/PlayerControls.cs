@@ -1,17 +1,19 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerControls : MonoBehaviour {
-    [SerializeField] private float _moveSpeed;
-    [SerializeField] private float _dashSpeed;
-    [SerializeField] private float _dashDecayMultiplier;
+    [SerializeField] private float _moveSpeed, _dashSpeed, _dashDecayMultiplier;
 
     [SerializeField] private Animator _animator;
     [SerializeField] private Rigidbody2D _rigidBody2D;
+    [Header("Input actions")]
+    [SerializeField] private InputActionReference _movementInput;
+    [SerializeField] private InputActionReference _inventoryInput, _dashInput;
 
     public bool IsMovementBlocked {  get; set; }
 
-    private Vector2 _dir;
-    private Vector2 _dashDir;
+    private Vector2 _dir, _dashDir;
     private float _dashSpeedVal;
 
     private void Start() {
@@ -43,10 +45,8 @@ public class PlayerControls : MonoBehaviour {
 
     private void InputMovement() {
         // normal movement
-        if (PlayerMain.Instance.State != PlayerStates.Dashing) {
-            float xKeyboard = Input.GetAxisRaw("Horizontal");
-            float yKeyboard = Input.GetAxisRaw("Vertical");
-            _dir = new Vector2(xKeyboard, yKeyboard).normalized;
+        if (PlayerMain.Instance.State != PlayerStates.Dashing && !UIManagerScript.Instance.InventoryOpened) {
+            _dir = _movementInput.action.ReadValue<Vector2>().normalized;
 
             // swapping states based on player input
             if (_dir != Vector2.zero) PlayerMain.Instance.State = PlayerStates.Moving;
@@ -56,7 +56,7 @@ public class PlayerControls : MonoBehaviour {
         }
 
         // player's dash on space press
-        if (Input.GetKeyDown(KeyCode.Space) && PlayerMain.Instance.State == PlayerStates.Moving) {
+        if (_dashInput.action.WasPressedThisFrame() && PlayerMain.Instance.State == PlayerStates.Moving) {
             _dashDir = _dir;
             PlayerMain.Instance.State = PlayerStates.Dashing;
         }
@@ -64,7 +64,8 @@ public class PlayerControls : MonoBehaviour {
         if (PlayerMain.Instance.State == PlayerStates.Dashing) {
             _dashSpeedVal -= _dashSpeedVal * _dashDecayMultiplier * Time.deltaTime;
             if (_dashSpeedVal <= _moveSpeed) {
-                if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+                // checking for the input during dash to know if player should move after dash or be idle
+                if (_movementInput.action.ReadValue<Vector2>().x != 0 || _movementInput.action.ReadValue<Vector2>().y != 0)
                     PlayerMain.Instance.State = PlayerStates.Moving;
                 else PlayerMain.Instance.State = PlayerStates.Idle;
                 _dashSpeedVal = _dashSpeed;
@@ -73,9 +74,9 @@ public class PlayerControls : MonoBehaviour {
     }
 
     private void InventoryControls() {
-        if (Input.GetKeyDown(KeyCode.I) && !UIManagerScript.Instance.InventoryOpened) { // opening inventory
+        if (_inventoryInput.action.WasPressedThisFrame() && !UIManagerScript.Instance.InventoryOpened) { // opening inventory
             UIManagerScript.Instance.ShowInventoryPanel();
-        } else if (Input.GetKeyDown(KeyCode.I) && UIManagerScript.Instance.InventoryOpened) { // closing inventory
+        } else if (_inventoryInput.action.WasPressedThisFrame() && UIManagerScript.Instance.InventoryOpened) { // closing inventory
             UIManagerScript.Instance.HideInventoryPanel();
         }
     }

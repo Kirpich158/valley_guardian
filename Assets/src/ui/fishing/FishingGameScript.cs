@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class FishingGameScript : MonoBehaviour {
     [SerializeField] private float _pointerSpeed;
@@ -9,6 +10,8 @@ public class FishingGameScript : MonoBehaviour {
     [SerializeField] private RectTransform _pointerTrans;
     [SerializeField] private RectTransform _progressBarTrans;
     [SerializeField] private CanvasGroup _canvasGroup;
+    [SerializeField] private InputActionReference _fishingHitInput;
+    [SerializeField] private InputActionReference _closeMenuInput;
     [Header("Values in %s")]
     [SerializeField] private float _progressDecay;
     [SerializeField] private float _progressReward;
@@ -34,7 +37,7 @@ public class FishingGameScript : MonoBehaviour {
         CheckPointerHit();
 
         // closing minigame if Esc was pressed during minigame
-        if (UIManagerScript.Instance.Fishing && Input.GetKeyDown(KeyCode.Escape)) {
+        if (UIManagerScript.Instance.Fishing && _closeMenuInput.action.WasPressedThisFrame()) {
             UIManagerScript.Instance.HideFishingGame();
         }
     }
@@ -62,7 +65,7 @@ public class FishingGameScript : MonoBehaviour {
     }
 
     private void CheckPointerHit() {
-        if (UIManagerScript.Instance.Fishing && Input.GetKeyDown(KeyCode.Space)) {
+        if (UIManagerScript.Instance.Fishing && _fishingHitInput.action.WasPressedThisFrame()) {
             if (_zoneObj == null) return;
             float zoneBot = _zoneObj.transform.localPosition.y - _zoneObj.GetComponent<RectTransform>().rect.height / 2;
             float zoneTop = _zoneObj.transform.localPosition.y + _zoneObj.GetComponent<RectTransform>().rect.height / 2;

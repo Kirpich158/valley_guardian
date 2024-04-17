@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public enum PlayerStates {
     Idle,
@@ -19,6 +20,7 @@ public class PlayerMain : MonoBehaviour {
 
     [SerializeField] private Inventory_UI _inventory_UI;
     [SerializeField] private PlayerTrigger playerTriggerScript;
+    [SerializeField] private InputActionReference _interactionInput;
     
     private void Awake() {
         Instance = this;
@@ -40,7 +42,7 @@ public class PlayerMain : MonoBehaviour {
             UIManagerScript.Instance.ShowGameOverPanel();
         }
 
-        if (playerTriggerScript.OnFishingSpot && Input.GetKeyDown(KeyCode.F) && Equipment.Equipments[6] != null) {
+        if (playerTriggerScript.OnFishingSpot && _interactionInput.action.WasPressedThisFrame() && Equipment.Equipments[6] != null) {
             UIManagerScript.Instance.ShowFishingGame();
         }
     }

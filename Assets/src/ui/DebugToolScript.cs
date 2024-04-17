@@ -1,14 +1,16 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class DebugToolScript : MonoBehaviour {
     [SerializeField] private CanvasGroup _canvasGroup;
+    [SerializeField] private InputActionReference _inputSystem;
     private bool _isPanelShown = false;
 
     public void Update() {
-        if (Input.GetKeyDown(KeyCode.BackQuote) && !_isPanelShown) { // opening panel
+        if (_inputSystem.action.WasPressedThisFrame() && !_isPanelShown) { // opening panel
             ShowPanel();
-        } else if (Input.GetKeyDown(KeyCode.BackQuote) && _isPanelShown) { // closing panel
+        } else if (_inputSystem.action.WasPressedThisFrame() && _isPanelShown) { // closing panel
             HidePanel();
         }
     }

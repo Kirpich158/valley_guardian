@@ -18,6 +18,7 @@ public class UIManagerScript : MonoBehaviour {
 
     private void Awake() {
         Instance = this;
+        InventoryOpened = DialogueOpened = Fishing = false;
     }
 
     public void AddHearts(int amount) {
