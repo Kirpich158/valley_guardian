@@ -40,7 +40,6 @@ public class PlayerControls : MonoBehaviour {
                 _rigidBody2D.velocity = _dashDir * _dashSpeedVal;
                 break;
         }
-        
     }
 
     private void InputMovement() {
@@ -50,7 +49,7 @@ public class PlayerControls : MonoBehaviour {
 
             // swapping states based on player input
             if (_dir != Vector2.zero) PlayerMain.Instance.State = PlayerStates.Moving;
-            else PlayerMain.Instance.State = PlayerStates.Idle;
+            else if (PlayerMain.Instance.State != PlayerStates.Attacking) PlayerMain.Instance.State = PlayerStates.Idle;
 
             SetAnimationParams();
         }

@@ -45,5 +45,7 @@ public class PlayerMain : MonoBehaviour {
         if (playerTriggerScript.OnFishingSpot && _interactionInput.action.WasPressedThisFrame() && Equipment.Equipments[6] != null) {
             UIManagerScript.Instance.ShowFishingGame();
         }
+
+        // Debug.Log(State);
     }
 }

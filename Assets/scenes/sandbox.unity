@@ -10332,6 +10332,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackInput: {fileID: 4244012336768170782, guid: 80b87d4c2d1e57d4e9e80582cd8f910f, type: 3}
   _pointerPos: {fileID: -4382991961146340598, guid: 80b87d4c2d1e57d4e9e80582cd8f910f, type: 3}
+  attackZonePrefab: {fileID: 2937674887287445641, guid: 87489b1d85ba22c4599ca99ea5d1aed3, type: 3}
+  attackDistance: 0.75
+  initAttackDuration: 1
 --- !u!95 &1286846822
 Animator:
   serializedVersion: 4
