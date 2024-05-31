@@ -2414,6 +2414,7 @@ MonoBehaviour:
   _dialoguePanelSrc: {fileID: 634700597}
   _gameOverTxt: {fileID: 27927364}
   _fishingGameSrc: {fileID: 1231636084}
+  _fade: {fileID: 1858664504}
 --- !u!4 &375354494
 Transform:
   m_ObjectHideFlags: 0
@@ -12967,6 +12968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a9653aadab29e0429c99c81e32ddeec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _img: {fileID: 1858664505}
 --- !u!114 &1858664505
 MonoBehaviour:
   m_ObjectHideFlags: 0

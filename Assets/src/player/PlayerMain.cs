@@ -23,7 +23,11 @@ public class PlayerMain : MonoBehaviour {
     [SerializeField] private InputActionReference _interactionInput;
     
     private void Awake() {
-        Instance = this;
+        if (Instance != null && Instance != this) {
+            Destroy(gameObject);
+        } else {
+            Instance = this;
+        }
         HealthVal = 3;
         State = PlayerStates.Idle;
     }

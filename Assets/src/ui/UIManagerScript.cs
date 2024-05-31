@@ -15,6 +15,7 @@ public class UIManagerScript : MonoBehaviour {
     [SerializeField] private DialogueScript _dialoguePanelSrc;
     [SerializeField] private TextMeshProUGUI _gameOverTxt; // ==> TODO make a panel instead, with buttons, progress, etc. <==
     [SerializeField] private FishingGameScript _fishingGameSrc;
+    [SerializeField] private FadeInOut _fade;
 
     private void Awake() {
         Instance = this;
@@ -40,10 +41,12 @@ public class UIManagerScript : MonoBehaviour {
     public void ShowInventoryPanel() {
         _inventoryPanelSrc.ShowPanel();
         InventoryOpened = true;
+        // StartCoroutine(_fade.FadeIn(2, 0.5f));
     }
     public void HideInventoryPanel() {
         _inventoryPanelSrc.HidePanel();
         InventoryOpened = false;
+        // StartCoroutine(_fade.FadeOut(2));
     }
 
     public void ShowFishingGame() {
